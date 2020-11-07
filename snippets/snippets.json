@@ -1,1 +1,58 @@
-{}
+{
+  "basic misimple BaseHTTPMiddleware middleware": {
+    "prefix": "httpmidd",
+    "body": [
+      "${1:from typing import Callable}",
+      "${1:from fastapi import FastAPI, Request, Response}",
+      "${1:from starlette.middleware.base import BaseHTTPMiddleware}",
+      "",
+      "class $2Middleware(BaseHTTPMiddleware):",
+      "    async def dispatch(self, request: Request, call_next: Callable) -> Response:",
+      "        $3",
+      "        response = await call_next(request)",
+      "        $4",
+      "        return response"
+    ],
+    "description": "simple BaseHTTPMiddleware middleware"
+  },
+  " add middlware to app": {
+    "prefix": "aam",
+    "body": [
+      "app.add_middleware(",
+      "    $1",
+      ")"
+    ],
+    "description": " add middlware to app"
+  },
+  "include router to app": {
+    "prefix": "air",
+    "body": [
+      "app.include_router(",
+      "    $1",
+      ")"
+    ],
+    "description": "include router to app"
+  },
+  "add CORS middleware to app": {
+    "prefix": "acors",
+    "body": [
+      "app.add_middleware(",
+      "    CORSMiddleware,",
+      "    allow_origins={$1:allow_origins},",
+      "    allow_credentials=True,",
+      "    allow_methods=[\"*\"],",
+      "    allow_headers=[\"*\"],",
+      ")"
+    ],
+    "description": "add CORS middleware to app"
+  },
+  "add an exception handler for HTTPException with specific code": {
+    "prefix": "exchandsp",
+    "body": [
+      "@app.exception_handler($1)",
+      "async def ${2:ExceptionHandler}(self, request):",
+      "    ${3:return PlainTextResponse(\"Error!\")}"
+    ],
+    "description": "add an exception handler for HTTPException with specific code"
+  }
+}
