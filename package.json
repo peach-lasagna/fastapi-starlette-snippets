@@ -1,0 +1,47 @@
+{
+  "name": "fastapi-starlette-snippets",
+  "displayName": "fastapi & starlette snippets",
+  "description": "snippets for 2 beautiful python async web frameworks.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.28.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/snippets.json"
+      }
+    ]
+  },
+  "publisher": "peach lasagna",
+  "author": {
+    "name": "peach lasagna",
+    "email": "kir.kud@inbox.ru"
+  },
+  "keywords": [
+    "python",
+    "starlette",
+    "fastapi",
+    "snippet",
+    "web",
+    "async"
+  ],
+  "license": "MIT",
+  "icon": "./resources/fastapi.png",
+  "galleryBanner": {
+    "color": "#00ccb9",
+    "theme": "light"
+  },
+  "bugs": {
+    "url": "https://github.com/peach-lasagna/fastapi-starlette-snippets/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peach-lasagna/fastapi-starlette-snippets.git"
+  },
+  "homepage": "https://github.com/peach-lasagna/fastapi-starlette-snippets/blob/master/README.md"
+}
