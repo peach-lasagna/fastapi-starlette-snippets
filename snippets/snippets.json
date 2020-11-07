@@ -18,8 +18,8 @@
   " add middlware to app": {
     "prefix": "aam",
     "body": [
-      "app.add_middleware(",
-      "    $1",
+      "${1:app}.add_middleware(",
+      "    $2",
       ")"
     ],
     "description": " add middlware to app"
@@ -27,8 +27,8 @@
   "include router to app": {
     "prefix": "air",
     "body": [
-      "app.include_router(",
-      "    $1",
+      "${1:app}.include_router(",
+      "    $2",
       ")"
     ],
     "description": "include router to app"
@@ -36,9 +36,9 @@
   "add CORS middleware to app": {
     "prefix": "acors",
     "body": [
-      "app.add_middleware(",
+      "${1:app}.add_middleware(",
       "    CORSMiddleware,",
-      "    allow_origins={$1:allow_origins},",
+      "    allow_origins=${2:allow_origins},",
       "    allow_credentials=True,",
       "    allow_methods=[\"*\"],",
       "    allow_headers=[\"*\"],",
@@ -47,12 +47,39 @@
     "description": "add CORS middleware to app"
   },
   "add an exception handler for HTTPException with specific code": {
-    "prefix": "exchandsp",
+    "prefix": "ExcHanCode",
     "body": [
-      "@app.exception_handler($1)",
-      "async def ${2:ExceptionHandler}(self, request):",
-      "    ${3:return PlainTextResponse(\"Error!\")}"
+      "@${1:app}.exception_handler($2)",
+      "async def ${3:ExceptionHandler}(self, request):",
+      "    ${4:return PlainTextResponse(\"Error!\")}"
     ],
     "description": "add an exception handler for HTTPException with specific code"
+  },
+  "create APIRouter": {
+    "prefix": "router",
+    "body": [
+      "${1:from fastapi import APIRouter}",
+      "$1",
+      "$1",
+      "${2:router} = APIRouter()"
+    ],
+    "description": "create APIRouter"
+  },
+  "add event handler": {
+    "prefix": "aevh",
+    "body": [
+      "${1:app}.add_event_handler(",
+      "    ${2:\"startup\"},",
+      "    ${3:function}",
+      ")"
+    ],
+    "description": "add event handler"
+  },
+  "add exception handler": {
+    "prefix": "aexh",
+    "body": [
+      "${1:app}.add_exception_handler(${2:HTTPException}, ${3:http_error_handler})"
+    ],
+    "description": "add exception handler"
   }
 }
